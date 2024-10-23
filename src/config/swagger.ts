@@ -1,38 +1,33 @@
-import { DocumentBuilder, SwaggerModule } from '@nestjs/swagger'
-import { INestApplication } from '@nestjs/common'
-import { UserModule } from 'src/modules/users/user.module'
-
+import { DocumentBuilder, SwaggerModule } from '@nestjs/swagger';
+import { INestApplication } from '@nestjs/common';
+import { UserModule } from 'src/modules/users/user.module';
 
 // import { SwaggerTheme } from 'swagger-themes'
 
-
 export function setupSwagger(app: INestApplication) {
   const options = new DocumentBuilder()
-    .setTitle('ISmaili BACKEND DOCUMENTATION')
+    .setTitle('Printo Kart API Documentation')
     .setDescription(
-      `
-  This is ISmaili API documentation, APIs are divided into various categories based on usage of APIs.
-  API are organized around REST. Our API are secured and has standard resource-oriented URLs, accepts form-encoded request 
-  bodies, returns JSON-encoded responses, and uses standard HTTP response codes. Our APIs
-  can be easily integrated with any platform or app and provide seamless user experience.`
+      `Printo Kart is an online platform for photo printing, custom frames, and document printing. 
+      The API enables user account management, image uploads, and order processing, supporting roles like admin and customers.
+       Key features include authentication, order management, and payment integration.`
     )
-    .setVersion('1')
+    .setVersion('1.0.0')
     .addBearerAuth()
     // .setExternalDoc('For more details click here', 'https://api-guide.owens.market')
     // .setTermsOfService('https://www.owens.market/terms-of-use')
     // .setContact('', '', 'techsupport@owens.market')
     // .addTag('User', 'User related operations')
-    .build()
+    .build();
 
   const document = SwaggerModule.createDocument(app, options, {
     include: [UserModule],
-  })
+  });
 
   if (document.components?.securitySchemes) {
-    delete document.components.securitySchemes['bearerAuth'] // Remove the default Bearer Authorization
+    delete document.components.securitySchemes['bearerAuth']; // Remove the default Bearer Authorization
   }
 
- 
   const themeOptions = {
     explorer: false,
     // customCss:
@@ -42,6 +37,6 @@ export function setupSwagger(app: INestApplication) {
     //     display: none
     //   }
     //   `,
-  }
-  SwaggerModule.setup('documentation', app, document, themeOptions)
+  };
+  SwaggerModule.setup('documentation', app, document, themeOptions);
 }

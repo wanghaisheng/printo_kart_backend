@@ -6,6 +6,7 @@ import {
   IsNumber,
   IsObject,
   IsOptional,
+  IsPhoneNumber,
   IsString,
   Length,
   Max,
@@ -28,10 +29,10 @@ export class UserDTO {
 }
 
 export class OnboardDTO {
-  @ApiProperty({ description: ''})
-  @IsNumber()
-  @IsNotEmpty()
-  loginType: OnboardingTypeEnum;
+  // @ApiProperty({ description: ''})
+  // @IsNumber()
+  // @IsNotEmpty()
+  // loginType: OnboardingTypeEnum;
 
   @ApiProperty({description: ''})
   @IsString()
@@ -39,10 +40,10 @@ export class OnboardDTO {
   @IsEmail()
   email: string;
 
-  @ApiProperty({description: ''})
-  @IsString()
-  @IsNotEmpty()
-  password: string;
+  // @ApiProperty({description: ''})
+  // @IsString()
+  // @IsNotEmpty()
+  // password: string;
 }
 
 export class VerifyOtpDto {
@@ -220,4 +221,56 @@ export class UserFilterDTO extends PageDTO {
   @ApiPropertyOptional({ description: 'The drinking habit of the user.' })
   @IsOptional()
   politics?: string;
+}
+
+
+export class CreateAddressDto {
+  @ApiProperty({description: ''})
+  @IsOptional()
+  firstName: string;
+
+  @ApiProperty({description: ''})
+  @IsOptional()
+  lastName: string;
+
+  @ApiProperty({description: ''})
+  @IsOptional()
+  @IsString()
+  country: string;
+
+  @ApiProperty({description: ''})
+  @IsOptional()
+  @IsString()
+  addressLine1: string;
+
+  @ApiProperty({description: ''})
+  @IsOptional()
+  @IsString()
+  addressLine2?: string;
+
+  @ApiProperty({description: ''})
+  @IsOptional()
+  @IsString()
+  town: string;
+
+  @ApiProperty({description: ''})
+  @IsOptional()
+  @IsString()
+  landmark?: string;
+
+  @ApiProperty({description: ''})
+  @IsOptional()
+  @IsString()
+  postcode: string;
+
+  @ApiProperty({description: ''})
+  @IsOptional()
+  // @IsPhoneNumber('IN') // Change 'IN' if you want validation for another country
+  phone: string;
+
+  @ApiProperty({description: ''})
+  @IsOptional()
+  @IsEmail()
+  email?: string;
+
 }
