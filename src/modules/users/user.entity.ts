@@ -53,7 +53,7 @@ export class UserVerification {
 
 @Entity()
 export class Address {
-  @PrimaryGeneratedColumn()
+  @PrimaryGeneratedColumn('uuid')
   id: string;
 
   @Column({ nullable: true })

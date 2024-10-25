@@ -276,7 +276,9 @@ export class UsersService {
     }
 
     // Create a new Address entity
+    const id = uuid()
     const newAddress = this.addressRepository.create({
+      id,
       firstName: user.firstName ? user.firstName : firstName,
       lastName: user.lastName ? user.lastName : lastName,
       country,
@@ -369,7 +371,7 @@ export class UsersService {
 
   async addressList(userId: string, { page, limit }: PageDTO) {
     try {
-      let user = userId || '3a4319b0-965b-4711-9737-1ef6844e4418';
+      let user = userId;
       const list = await getAddressList(user, page, limit);
 
       const count = await getAddressCount(user);

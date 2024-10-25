@@ -73,7 +73,6 @@ export class UserController {
     @Body() createAddressDto: CreateAddressDto,
   ) {
     // Call the service method to add a new address
-    console.log('controller', userId);
     return await this.usersService.addNewAddress(createAddressDto, userId);
   }
 
