@@ -101,9 +101,7 @@ export class UsersService {
     const hashedOtp = await bcrypt.hash(otp, salt);
 
     // Send OTP via email (Mailer service should handle the actual sending)
-    // await this.mailService.sendEmailOTP(email, otp);
-
-    console.log(`OTP sent to ${email}: ${otp}`); // For demonstration purposes, log the plain OTP
+    await this.mailService.sendEmailOTP(email, otp);
 
     // Create and save the hashed OTP in the database
     const userVerification = this.userVerificationRepository.create({
@@ -276,7 +274,7 @@ export class UsersService {
     }
 
     // Create a new Address entity
-    const id = uuid()
+    const id = uuid();
     const newAddress = this.addressRepository.create({
       id,
       firstName: user.firstName ? user.firstName : firstName,

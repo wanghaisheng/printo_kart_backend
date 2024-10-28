@@ -1,8 +1,7 @@
-
-
 import { NestFactory } from '@nestjs/core';
 import { AppModule } from './app.module';
 import { ValidationPipe, Logger } from '@nestjs/common';
+
 // import * as compression from 'compression'
 import * as basicAuth from 'express-basic-auth';
 import { setupSwagger } from './config/swagger';
