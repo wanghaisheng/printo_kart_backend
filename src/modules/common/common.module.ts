@@ -1,9 +1,8 @@
-import { Module } from '@nestjs/common';
-import { TypeOrmModule } from '@nestjs/typeorm';
-import { ConfigModule } from '@nestjs/config';
-import { CommonController } from './common.controller';
-import { CommonService } from './common.service';
-
+import { Module } from '@nestjs/common'
+import { TypeOrmModule } from '@nestjs/typeorm'
+import { ConfigModule } from '@nestjs/config'
+import { CommonController } from './common.controller'
+import { CommonService } from './common.service'
 
 @Module({
   imports: [

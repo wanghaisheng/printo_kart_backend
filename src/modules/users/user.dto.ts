@@ -12,20 +12,20 @@ import {
   Max,
   Min,
   ValidateIf,
-} from 'class-validator';
-import { OnboardingTypeEnum } from './user.interface';
-import { ApiProperty, ApiPropertyOptional } from '@nestjs/swagger';
-import { Type } from 'class-transformer';
+} from 'class-validator'
+import { OnboardingTypeEnum } from './user.interface'
+import { ApiProperty, ApiPropertyOptional } from '@nestjs/swagger'
+import { Type } from 'class-transformer'
 
 export class UserDTO {
   @IsString()
   @IsNotEmpty()
   @IsEmail()
-  email: string;
+  email: string
 
   @IsString()
   @IsNotEmpty()
-  password: string;
+  password: string
 }
 
 export class OnboardDTO {
@@ -34,11 +34,11 @@ export class OnboardDTO {
   // @IsNotEmpty()
   // loginType: OnboardingTypeEnum;
 
-  @ApiProperty({description: ''})
+  @ApiProperty({ description: '' })
   @IsString()
   @IsNotEmpty()
   @IsEmail()
-  email: string;
+  email: string
 
   // @ApiProperty({description: ''})
   // @IsString()
@@ -51,7 +51,7 @@ export class VerifyOtpDto {
     description: 'The verification code received on the provided data',
   })
   @IsString()
-  userId: string;
+  userId: string
 
   @ApiProperty({
     description: 'The verification code received on the provided data',
@@ -59,19 +59,19 @@ export class VerifyOtpDto {
   @IsString()
   @IsNotEmpty({ message: 'OTP is required' })
   @Length(6, 6, { message: 'OTP must be exactly 6 characters long' })
-  otp: string;
+  otp: string
 }
 
 export class CreateProfileDTO {
   @ApiPropertyOptional({ description: 'Name of the user' })
   @IsOptional()
   @IsString()
-  fullName: string;
+  fullName: string
 
   @ApiPropertyOptional({ description: 'Phone number of the user' })
   @IsOptional()
   @IsString()
-  phone: string;
+  phone: string
 
   // @ApiPropertyOptional({ description: 'Social profiles of the user' })
   // @IsOptional()
@@ -83,14 +83,14 @@ export class CreateProfileDTO {
   })
   @IsOptional()
   @IsEmail()
-  email: string;
+  email: string
 }
 
 export class AddUserImagesDTO {
   @ApiPropertyOptional({ description: 'Profile picture link' })
   @IsOptional()
   @IsString()
-  imageUrl: string;
+  imageUrl: string
 
   // @ApiProperty({ description: 'User image type ' })
   // @IsOptional()
@@ -104,7 +104,7 @@ export class PageDTO {
   @Type(() => Number)
   @IsNumber()
   @Min(1)
-  page: number;
+  page: number
 
   @ApiPropertyOptional({ description: 'Profile picture link' })
   @IsOptional()
@@ -112,39 +112,39 @@ export class PageDTO {
   @IsNumber()
   @Min(1)
   @Max(1000)
-  limit: number;
+  limit: number
 }
 
 export class UserFilterDTO extends PageDTO {
   @ApiPropertyOptional({ description: 'Name of the user' })
   @IsOptional()
   @IsString()
-  fullName?: string;
+  fullName?: string
 
   @ApiPropertyOptional({ description: 'Phone number of the user' })
   @IsOptional()
   @IsString()
-  phone?: string;
+  phone?: string
 
   @ApiPropertyOptional({ description: 'Birthday of the user' })
   @IsOptional()
   @IsString()
-  birthday?: string;
+  birthday?: string
 
   @ApiPropertyOptional({ description: 'Religion of the user' })
   @IsOptional()
   @IsString()
-  religion?: string;
+  religion?: string
 
   @ApiPropertyOptional({ description: 'Height of the user' })
   @IsOptional()
   @IsString()
-  height?: string;
+  height?: string
 
   @ApiPropertyOptional({ description: 'Bio of the user' })
   @IsOptional()
   @IsArray()
-  hobbies?: string[];
+  hobbies?: string[]
 
   // @ApiPropertyOptional({ description: 'The ID of template.' })
   // @IsOptional()
@@ -163,16 +163,16 @@ export class UserFilterDTO extends PageDTO {
 
   @ApiPropertyOptional({ description: 'The ID of template.' })
   @IsOptional()
-  language?: string[];
+  language?: string[]
 
   @ApiPropertyOptional({ description: 'Education level of the user' })
   @IsOptional()
-  education?: string;
+  education?: string
 
   @ApiPropertyOptional({ description: 'Gender of the user' })
   @IsOptional()
   @IsString()
-  gender?: string;
+  gender?: string
 
   // @ApiPropertyOptional({ description: 'What the user is looking for' })
   // @IsOptional()
@@ -181,96 +181,94 @@ export class UserFilterDTO extends PageDTO {
   @ApiPropertyOptional({ description: 'Bio of the user' })
   @IsOptional()
   @IsString()
-  bio?: string;
+  bio?: string
 
   @ApiPropertyOptional({ description: 'Email address of the user' })
   @IsOptional()
   @IsEmail()
-  email?: string;
+  email?: string
 
   @ApiPropertyOptional({ description: 'Email address of the user' })
   @IsOptional()
   @IsString()
-  location?: string;
+  location?: string
 
   @ApiPropertyOptional({ description: 'Email address of the user' })
   @IsOptional()
   @IsString()
-  homeTown?: string;
+  homeTown?: string
 
   @ApiPropertyOptional({ description: 'The zodiac sign of the user.' })
   @IsOptional()
-  zodiac?: string;
+  zodiac?: string
 
   @ApiPropertyOptional({ description: 'The smoking habit of the user.' })
   @IsOptional()
-  smoke?: string;
+  smoke?: string
 
   @ApiPropertyOptional({ description: 'The drinking habit of the user.' })
   @IsOptional()
-  drink?: string;
+  drink?: string
 
   @ApiPropertyOptional({ description: 'The drinking habit of the user.' })
   @IsOptional()
-  exercise?: string;
+  exercise?: string
 
   @ApiPropertyOptional({ description: 'The drinking habit of the user.' })
   @IsOptional()
-  kids?: string;
+  kids?: string
 
   @ApiPropertyOptional({ description: 'The drinking habit of the user.' })
   @IsOptional()
-  politics?: string;
+  politics?: string
 }
 
-
 export class CreateAddressDto {
-  @ApiProperty({description: ''})
+  @ApiProperty({ description: '' })
   @IsOptional()
-  firstName: string;
+  firstName: string
 
-  @ApiProperty({description: ''})
+  @ApiProperty({ description: '' })
   @IsOptional()
-  lastName: string;
+  lastName: string
 
-  @ApiProperty({description: ''})
-  @IsOptional()
-  @IsString()
-  country: string;
-
-  @ApiProperty({description: ''})
+  @ApiProperty({ description: '' })
   @IsOptional()
   @IsString()
-  addressLine1: string;
+  country: string
 
-  @ApiProperty({description: ''})
+  @ApiProperty({ description: '' })
   @IsOptional()
   @IsString()
-  addressLine2?: string;
+  addressLine1: string
 
-  @ApiProperty({description: ''})
+  @ApiProperty({ description: '' })
   @IsOptional()
   @IsString()
-  town: string;
+  addressLine2?: string
 
-  @ApiProperty({description: ''})
+  @ApiProperty({ description: '' })
   @IsOptional()
   @IsString()
-  landmark?: string;
+  town: string
 
-  @ApiProperty({description: ''})
+  @ApiProperty({ description: '' })
   @IsOptional()
   @IsString()
-  postcode: string;
+  landmark?: string
 
-  @ApiProperty({description: ''})
+  @ApiProperty({ description: '' })
+  @IsOptional()
+  @IsString()
+  postcode: string
+
+  @ApiProperty({ description: '' })
   @IsOptional()
   // @IsPhoneNumber('IN') // Change 'IN' if you want validation for another country
-  phone: string;
+  phone: string
 
-  @ApiProperty({description: ''})
+  @ApiProperty({ description: '' })
   @IsOptional()
   @IsEmail()
-  email?: string;
-
+  email?: string
 }

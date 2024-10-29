@@ -1,93 +1,84 @@
-import { CreatedModified } from '../../../helper';
-import {
-  Entity,
-  PrimaryGeneratedColumn,
-  Column,
-  CreateDateColumn,
-  ManyToOne,
-  JoinColumn,
-  UpdateDateColumn,
-  PrimaryColumn,
-} from 'typeorm';
+import { CreatedModified } from '../../../helper'
+import { Entity, PrimaryGeneratedColumn, Column, CreateDateColumn, ManyToOne, JoinColumn, UpdateDateColumn, PrimaryColumn } from 'typeorm'
 
 @Entity('users') // Define table name explicitly (optional)
 export class Users extends CreatedModified {
   @PrimaryColumn()
-  id: string; // Use definite assignment assertion
+  id: string // Use definite assignment assertion
 
   @Column({ unique: true })
-  email!: string;
+  email!: string
 
   @Column({ nullable: true })
-  firstName?: string;
+  firstName?: string
 
   @Column({ nullable: true })
-  lastName?: string;
+  lastName?: string
 
   @Column({ nullable: true })
-  phone?: string;
+  phone?: string
 }
 
 @Entity('user_verification')
 export class UserVerification {
   @PrimaryGeneratedColumn('uuid')
-  id?: string;
+  id?: string
 
   @Column()
-  userId!: string; // Mark this as required to ensure it's always initialized
+  userId!: string // Mark this as required to ensure it's always initialized
 
   @Column({ type: 'text' })
-  otp!: string;
+  otp!: string
 
   @CreateDateColumn({ type: 'timestamp', default: () => 'CURRENT_TIMESTAMP' })
-  created?: Date;
+  created?: Date
 
   @UpdateDateColumn({ type: 'timestamp', default: () => 'CURRENT_TIMESTAMP' })
-  modified?: Date;
+  modified?: Date
 
   // Optionally, define a relation to the `User` entity
   @ManyToOne(() => Users)
   @JoinColumn({ name: 'userId' })
-  user?: Users;
+  user?: Users
 }
 
 @Entity()
 export class Address {
   @PrimaryGeneratedColumn('uuid')
-  id: string;
+  id: string
 
   @Column({ nullable: true })
-  firstName: string;
+  firstName: string
 
   @Column({ nullable: true })
-  lastName: string;
+  lastName: string
 
   @Column()
-  country: string;
+  country: string
 
   @Column()
-  addressLine1: string;
+  addressLine1: string
 
   @Column({ nullable: true })
-  addressLine2: string;
+  addressLine2: string
 
   @Column()
-  town: string;
+  town: string
 
   @Column({ nullable: true })
-  landmark: string;
+  landmark: string
 
   @Column()
-  postcode: string;
+  postcode: string
 
   @Column({ nullable: true })
-  phone: string;
+  phone: string
 
   @Column({ nullable: true })
-  email: string;
+  email: string
 
   @Column({ nullable: true })
-  userId: string;
+  userId: string
 
   // Define the ManyToOne relationship with User
   // @ManyToOne(() => Users, (user) => Users.addresses)
